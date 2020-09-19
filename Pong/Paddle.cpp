@@ -3,9 +3,11 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/random.hpp>
 
-Paddle::Paddle(glm::vec2 wsize, bool mode, bool human) : player(mode), pos(0.0f),
-	speed(0.0f), size(8.125f, 100.0f), ia(!human)
+Paddle::Paddle(glm::vec2 wsize, bool mode, bool human) : player(mode), size(8.125f, 100.0f), ia(!human)
 {
+	pos = glm::vec3(0.0f);
+	speed = glm::vec2(0.0f);
+
 	glm::vec3 color(255.0f);
 	ball = NULL;
 	addVertex(glm::vec3(0.0f, 0.0f, 0.0f), color);

@@ -1,5 +1,7 @@
 #include "Window.h"
 #include <iostream>
+#include "Ball.h"
+#include "Paddle.h"
 
 unsigned int Window::_count = 0;
 
@@ -118,6 +120,7 @@ void Window::display()
 {
 	glm::mat4 projection;
 	double x, y;
+	MovingShape* ms;
 
 	while (!glfwWindowShouldClose(_window))
 	{
@@ -130,7 +133,11 @@ void Window::display()
 		for (Shape2D *shape : _shapes)
 		{
 			shape->projection(projection);
-			shape->update(glm::vec2(_w, _h), glm::vec2(x, y));
+			if ((ms = dynamic_cast<MovingShape*>(shape)))
+			{
+				ms->update(glm::vec2(_w, _h), glm::vec2(x, y));
+			}
+			//shape->update(glm::vec2(_w, _h), glm::vec2(x, y));
 			shape->draw();
 		}
 

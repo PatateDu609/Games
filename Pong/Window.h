@@ -7,6 +7,7 @@
 #include <array>
 #include <vector>
 #include "Shape2D.h"
+#include "MovingShape.h"
 
 #include <glm/glm.hpp>
 

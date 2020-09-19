@@ -4,10 +4,11 @@
 #include "Shape2D.h"
 #include "Window.h"
 #include "Ball.h"
+#include "MovingShape.h"
 
 class Ball;
 
-class Paddle : public Shape2D
+class Paddle : public Shape2D, public MovingShape
 {
 public:
 	Paddle(glm::vec2 wsize, bool mode, bool human);
@@ -20,8 +21,6 @@ public:
 
 private:
 	bool player;
-	glm::vec3 pos;
-	glm::vec2 speed;
 	glm::vec2 size;
 
 	const Ball* ball;

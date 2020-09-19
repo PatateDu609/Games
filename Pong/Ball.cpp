@@ -1,9 +1,9 @@
 #include "Ball.h"
 
-Ball::Ball(glm::vec2 size) : Shape2D(),
-	pos(size.x / 2.0f, size.y / 2.0f, 0.0f),
-	speed(1.0f, 0.1f), accel(1.0f), radius(8.125f), baseSpeed(6), paddles({NULL, NULL})
+Ball::Ball(glm::vec2 size) : Shape2D(), accel(1.0f), radius(8.125f), baseSpeed(6), paddles({NULL, NULL})
 {
+	pos = glm::vec3(size.x / 2.0f, size.y / 2.0f, 0.0f);
+	speed = glm::vec2(1.0f, 0.1f);
 	glm::vec3 center(0.0f);
 	float radius = 8.125f;
 	unsigned int sides = 16;
@@ -69,8 +69,8 @@ void Ball::collide(const Paddle *paddle)
 	speed.y = -sinf(bounceAngle);
 	if (paddle->getPos().x > pos.x)
 		speed.x *= -1;
-	accel.x *= 1.2;
-	accel.y *= 1.2;
+	accel.x *= 1.2f;
+	accel.y *= 1.2f;
 }
 
 bool Ball::isColliding(const Paddle* pad, bool mode) const

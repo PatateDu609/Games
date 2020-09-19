@@ -12,7 +12,7 @@ class Shape2D
 {
 public:
 	Shape2D();
-	~Shape2D();
+	virtual ~Shape2D();
 
 	void addVertex(glm::vec3 coord);
 	void addVertex(glm::vec3 coord, glm::ivec3 color);
@@ -22,7 +22,6 @@ public:
 
 	void setShader(std::string vertexShader, std::string fragmentShader);
 
-	virtual void update(glm::vec2 size, glm::vec2 mouse) = 0;
 	void config();
 	void draw();
 

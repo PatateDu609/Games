@@ -3,12 +3,13 @@
 
 #include "Shape2D.h"
 #include "Paddle.h"
+#include "MovingShape.h"
 #include "Window.h"
 #include <array>
 
 class Paddle;
 
-class Ball : public Shape2D
+class Ball : public Shape2D, public MovingShape
 {
 public:
 	Ball(glm::vec2 size);
@@ -21,8 +22,8 @@ public:
 	glm::vec2 getSpeed() const;
 
 private:
-	glm::vec3 pos;
-	glm::vec2 speed;
+	/*glm::vec3 pos;
+	glm::vec2 speed;*/
 	glm::vec2 accel;
 
 	const float radius;
