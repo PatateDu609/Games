@@ -1,7 +1,7 @@
 #include "Shape2D.h"
 
-Shape2D::Shape2D() : VAO(0), VBO(0), shader(NULL),
-	data(), configured(false), vertexCount(0),
+Shape2D::Shape2D(GLenum mode) : VAO(0), VBO(0), shader(NULL),
+	data(), configured(false), vertexCount(0), usage(mode),
 	_model(1.0f), _projection(1.0f)
 {
 
@@ -48,7 +48,7 @@ void Shape2D::config()
 
 	float* raw = data.data();
 
-	glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), raw, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), raw, usage);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)(sizeof(float) * 3));

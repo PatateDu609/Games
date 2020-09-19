@@ -1,6 +1,7 @@
 #include "Ball.h"
 
-Ball::Ball(glm::vec2 size) : Shape2D(), accel(1.0f), radius(8.125f), baseSpeed(6), paddles({NULL, NULL})
+Ball::Ball(glm::vec2 size) : Shape2D(), accel(1.0f), radius(8.125f), baseSpeed(6),
+	paddles({NULL, NULL}), topBound(NULL)
 {
 	pos = glm::vec3(size.x / 2.0f, size.y / 2.0f, 0.0f);
 	speed = glm::vec2(1.0f, 0.1f);
@@ -43,7 +44,8 @@ void Ball::update(glm::vec2 size, glm::vec2 mouse)
 		speed.y = 0.0f;
 		accel.x = accel.y = speed.x = 1.0f;
 	}
-	if (pos.y + radius > size.y || pos.y - radius < 0)
+	if (((topBound && pos.y - radius < topBound->getPos().y) || 
+		(pos.y + radius > size.y)) || pos.y - radius < 0)
 		speed.y *= -1;
 
 	bool p1;
@@ -91,6 +93,11 @@ void Ball::setPaddles(const Paddle* p1, const Paddle* p2)
 {
 	paddles[0] = p1;
 	paddles[1] = p2;
+}
+
+void Ball::setLine(const Line* line)
+{
+	this->topBound = line;
 }
 
 glm::vec2 Ball::getPos() const

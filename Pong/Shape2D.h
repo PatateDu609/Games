@@ -3,6 +3,7 @@
 
 #include "Shader.h"
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -11,7 +12,7 @@
 class Shape2D
 {
 public:
-	Shape2D();
+	Shape2D(GLenum mode = GL_DYNAMIC_DRAW);
 	virtual ~Shape2D();
 
 	void addVertex(glm::vec3 coord);
@@ -32,6 +33,7 @@ private:
 	std::vector<float> data;
 	bool configured;
 	unsigned int vertexCount;
+	GLenum usage;
 
 	glm::mat4 _model;
 	glm::mat4 _projection;

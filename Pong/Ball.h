@@ -3,6 +3,7 @@
 
 #include "Shape2D.h"
 #include "Paddle.h"
+#include "Line.h"
 #include "MovingShape.h"
 #include "Window.h"
 #include <array>
@@ -17,19 +18,19 @@ public:
 	virtual void update(glm::vec2 size, glm::vec2 mouse);
 
 	void setPaddles(const Paddle* p1, const Paddle* p2);
+	void setLine(const Line *line);
 
 	glm::vec2 getPos() const;
 	glm::vec2 getSpeed() const;
 
 private:
-	/*glm::vec3 pos;
-	glm::vec2 speed;*/
 	glm::vec2 accel;
 
 	const float radius;
 	const float baseSpeed;
 
 	std::array<const Paddle*, 2> paddles;
+	const Line *topBound;
 
 	void collide(const Paddle *paddle);
 	bool isColliding(const Paddle *pad, bool mode) const;
