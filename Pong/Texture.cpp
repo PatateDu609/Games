@@ -4,24 +4,21 @@
 #include <stb_image.h>
 
 Texture::Texture(unsigned int tex_slot, std::string filename, bool flip) :
-	slot(tex_slot), ID(0), file(filename), width(0), height(0), channels(0)
+	slot(tex_slot), ID(0), width(0), height(0), channels(0)
 {
 	stbi_set_flip_vertically_on_load(flip);
+	data = stbi_load(filename.c_str(), &width, &height, &channels, STBI_rgb_alpha);
 
 	glGenTextures(1, &ID);
 }
 
 Texture::Texture(unsigned int tex_slot, unsigned char* image, int w, int h, int nbrChannel) :
-	slot(tex_slot), ID(0), width(w), height(h), channels(nbrChannel)
+	slot(tex_slot), ID(0), data(image), width(w), height(h), channels(nbrChannel)
 {
-
 }
 
 bool Texture::load()
 {
-	if (!file.size())
-		return (false);
-	unsigned char* data = stbi_load(file.c_str(), &width, &height, &channels, STBI_rgb_alpha);
 	if (!data)
 		std::cerr << "Error : Texture : Failed to load the texture" << std::endl;
 	use();
@@ -29,6 +26,7 @@ bool Texture::load()
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 	glGenerateMipmap(GL_TEXTURE_2D);
 	stbi_image_free(data);
+	data = NULL;
 	return (true);
 }
 

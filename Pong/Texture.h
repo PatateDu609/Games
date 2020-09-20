@@ -22,7 +22,7 @@ public:
 private:
 	unsigned int ID;
 	unsigned int slot;
-	std::string file;
+	unsigned char* data;
 	int width;
 	int height;
 	int channels;
