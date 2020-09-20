@@ -1,8 +1,8 @@
-#include "Window.h"
+#include "../headers/Window.h"
 #include <iostream>
-#include "Ball.h"
-#include "Paddle.h"
-#include "TexturedShape.h"
+#include "../headers/Ball.h"
+#include "../headers/Paddle.h"
+#include "../headers/TexturedShape.h"
 
 unsigned int Window::_count = 0;
 

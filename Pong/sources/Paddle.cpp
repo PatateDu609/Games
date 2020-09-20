@@ -1,4 +1,4 @@
-#include "Paddle.h"
+#include "../headers/Paddle.h"
 #include <cmath>
 #include <glm/glm.hpp>
 #include <glm/gtc/random.hpp>

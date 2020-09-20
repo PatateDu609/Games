@@ -1,4 +1,4 @@
-#include "TexturedShape.h"
+#include "../headers/TexturedShape.h"
 
 TexturedShape::TexturedShape(Texture *texture) : Shape2D()
 {

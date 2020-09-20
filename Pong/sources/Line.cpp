@@ -1,4 +1,4 @@
-#include "Line.h"
+#include "../headers/Line.h"
 
 Line::Line(glm::vec2 size) : Shape2D(GL_STATIC_DRAW)
 {

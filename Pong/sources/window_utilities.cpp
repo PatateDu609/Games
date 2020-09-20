@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "../headers/Window.h"
 
 std::array<int, 4> arrows = { -1, -1, -1, -1 };
 

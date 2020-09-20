@@ -1,4 +1,4 @@
-#include "Ball.h"
+#include "../headers/Ball.h"
 
 Ball::Ball(glm::vec2 size) : Shape2D(), accel(1.0f), radius(8.125f), baseSpeed(6),
 	paddles({NULL, NULL}), topBound(NULL)

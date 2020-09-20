@@ -1,4 +1,4 @@
-#include "Shape2D.h"
+#include "../headers/Shape2D.h"
 
 Shape2D::Shape2D(GLenum mode) : VAO(0), VBO(0), shader(NULL),
 	data(), configured(false), vertexCount(0), usage(mode),

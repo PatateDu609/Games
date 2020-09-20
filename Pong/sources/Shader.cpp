@@ -1,4 +1,4 @@
-#include "Shader.h"
+#include "../headers/Shader.h"
 #include <sstream>
 
 Shader::Shader(const char* vertexShader, const char* fragmentShader)
