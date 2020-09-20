@@ -15,6 +15,7 @@
 - Cross platform (for now it's only working on Windows)
 
 ## Dependencies
+- C++17 (or higher, for std::filesystem)
 - OpenGL (3.3 or higher)
 - GLFW (3.3.2 or higher)
 - FreeType (2102 or higher)
