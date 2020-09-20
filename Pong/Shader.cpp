@@ -153,3 +153,8 @@ void Shader::setMat4(const char* name, glm::mat4& mat) const
 	unsigned int loc = glGetUniformLocation(_ID, name);
 	glUniformMatrix4fv(loc, 1, GL_FALSE, &mat[0][0]);
 }
+
+void Shader::useTexture(const char *name, const Texture& tex) const
+{
+	setInt(name, tex.getSlot());
+}

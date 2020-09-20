@@ -35,6 +35,14 @@ void Shape2D::addVertex(glm::vec3 coord, glm::ivec3 color)
 	data.push_back(color.z / 255.0f);
 }
 
+void Shape2D::vertexAttribConfig()
+{
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(sizeof(float) * 3));
+	glEnableVertexAttribArray(1);
+}
+
 void Shape2D::config()
 {
 	if (configured)
@@ -47,15 +55,13 @@ void Shape2D::config()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
 	float* raw = data.data();
-
 	glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), raw, usage);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)(sizeof(float) * 3));
-	glEnableVertexAttribArray(1);
+	vertexAttribConfig();
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+
+	optConfig();
 }
 
 void Shape2D::draw()
@@ -83,4 +89,9 @@ void Shape2D::model(glm::mat4& model)
 void Shape2D::projection(glm::mat4& projection)
 {
 	_projection = projection;
+}
+
+void Shape2D::optConfig()
+{
+
 }

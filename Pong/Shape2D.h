@@ -15,8 +15,8 @@ public:
 	Shape2D(GLenum mode = GL_DYNAMIC_DRAW);
 	virtual ~Shape2D();
 
-	void addVertex(glm::vec3 coord);
-	void addVertex(glm::vec3 coord, glm::ivec3 color);
+	virtual void addVertex(glm::vec3 coord);
+	virtual void addVertex(glm::vec3 coord, glm::ivec3 color);
 
 	void model(glm::mat4 &model);
 	void projection(glm::mat4 &projection);
@@ -26,13 +26,17 @@ public:
 	void config();
 	void draw();
 
+protected:
+	virtual void vertexAttribConfig();
+	virtual void optConfig();
+	std::vector<float> data;
+	Shader *shader;
+	unsigned int vertexCount;
+
 private:
 	unsigned int VAO;
 	unsigned int VBO;
-	Shader *shader;
-	std::vector<float> data;
 	bool configured;
-	unsigned int vertexCount;
 	GLenum usage;
 
 	glm::mat4 _model;

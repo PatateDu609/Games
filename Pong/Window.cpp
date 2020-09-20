@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Ball.h"
 #include "Paddle.h"
+#include "TexturedShape.h"
 
 unsigned int Window::_count = 0;
 
@@ -121,6 +122,10 @@ void Window::display()
 	glm::mat4 projection;
 	double x, y;
 	MovingShape* ms;
+	TexturedShape* ts;
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	while (!glfwWindowShouldClose(_window))
 	{
@@ -134,10 +139,9 @@ void Window::display()
 		{
 			shape->projection(projection);
 			if ((ms = dynamic_cast<MovingShape*>(shape)))
-			{
 				ms->update(glm::vec2(_w, _h), glm::vec2(x, y));
-			}
-			//shape->update(glm::vec2(_w, _h), glm::vec2(x, y));
+			if ((ts = dynamic_cast<TexturedShape*>(shape)))
+				ts->useTextures();
 			shape->draw();
 		}
 

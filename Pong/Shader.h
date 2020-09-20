@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <glm/glm.hpp>
+#include "Texture.h"
 
 class Shader
 {
@@ -27,6 +28,8 @@ public:
 	void setMat2(const char* name, glm::mat2 &mat) const;
 	void setMat3(const char* name, glm::mat3 &mat) const;
 	void setMat4(const char* name, glm::mat4 &mat) const;
+
+	void useTexture(const char *name, const Texture& tex) const;
 
 	unsigned int getID() const;
 
