@@ -14,6 +14,8 @@
 - Menu
 - Cross platform (for now it's only working on Windows)
 
+![Image of Pong](https://raw.githubusercontent.com/PatateDu609/Games/master/Pong/pong.PNG)
+
 ## Dependencies
 - C++17 (or higher, for std::filesystem)
 - OpenGL (3.3 or higher)
