@@ -10,7 +10,7 @@
 ### Pong
 - Two player mode (with keyboard) : done
 - Versus computer mode : done
-- Scoring
+- Scoring : done
 - Menu
 - Cross platform (for now it's only working on Windows)
 
