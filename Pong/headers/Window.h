@@ -7,7 +7,9 @@
 #include <array>
 #include <vector>
 #include "Shape2D.h"
+#include "Text.h"
 #include "MovingShape.h"
+#include "GroupedShape.h"
 
 #include <glm/glm.hpp>
 
@@ -38,6 +40,8 @@ public:
 	void setSize(int w, int h);
 
 	void addShape(Shape2D *shape);
+	void addText(Text *text);
+	void addGroupedShape(GroupedShape *text);
 
 	bool init();
 	void display();
@@ -50,6 +54,8 @@ private:
 	glm::vec4 _bg;
 
 	std::vector<Shape2D *> _shapes;
+	std::vector<Text*> _textes;
+	std::vector<GroupedShape*> _groupedShapes;
 
 	static unsigned int _count;
 };

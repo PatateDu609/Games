@@ -1,23 +1,32 @@
 #include <iostream>
 #include <filesystem>
+
 #include "../headers/Window.h"
 #include "../headers/Ball.h"
 #include "../headers/Paddle.h"
 #include "../headers/Line.h"
+#include "../headers/Score.h"
 
 #include "../headers/Texture.h"
 #include "../headers/TexturedShape.h"
+
+#include "../headers/Font.h"
+
 #include "../headers/ressources_loader.h"
 
 int main()
 {
 	std::filesystem::path shadersPath = std::filesystem::absolute(std::filesystem::path("../Pong/shaders"));
 	std::filesystem::path texturesPath = std::filesystem::absolute(std::filesystem::path("../Pong/textures"));
+	std::filesystem::path fontsPath = std::filesystem::absolute(std::filesystem::path("../Pong/fonts"));
 	Ressources::setPrefix(Ressources::Type::SHADERS, shadersPath.string());
 	Ressources::setPrefix(Ressources::Type::TEXTURES, texturesPath.string());
+	Ressources::setPrefix(Ressources::Type::FONTS, fontsPath.string());
+
 
 	glm::vec2 size = glm::vec2(600.0f, 500.0f);
-	Window window(static_cast<unsigned int>(floor(size.x)), static_cast<unsigned int>(floor(size.y)), "Pong");
+	Window window(static_cast<unsigned int>(floor(size.x)), 
+		static_cast<unsigned int>(floor(size.y)), "Pong");
 	window.init();
 
 	Ball ball(size);
@@ -25,8 +34,14 @@ int main()
 	Paddle p2(size, false, false);
 	Line line(size);
 
+	Font font(Ressources::load("04b-03.ttf"));
+	Score score(font, size);
+
+
 	ball.setPaddles(&p1, &p2);
 	ball.setLine(&line);
+	ball.setScore(&score);
+
 	p1.setBall(&ball);
 	p2.setBall(&ball);
 	ball.setShader(Ressources::load("colored.vert"), Ressources::load("colored.frag"));
@@ -37,6 +52,7 @@ int main()
 	window.addShape(&p2);
 	window.addShape(&p1);
 	window.addShape(&line);
+	window.addGroupedShape(&score);
 
 	Texture tex(0, Ressources::load("pause.png"), false);
 	tex.textureFilter(GL_LINEAR, GL_LINEAR);

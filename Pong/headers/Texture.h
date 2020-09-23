@@ -12,7 +12,7 @@ public:
 	Texture(unsigned int tex_slot, std::string filename, bool flip = false);
 	Texture(unsigned int tex_slot, unsigned char* image, int w, int h, int nbrChannel);
 
-	bool load();
+	bool load(bool mipmap = true);
 	void use() const;
 	unsigned int getSlot() const;
 
@@ -26,6 +26,8 @@ private:
 	int width;
 	int height;
 	int channels;
+
+	bool raw;
 
 	void selectActive() const;
 };

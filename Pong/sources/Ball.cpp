@@ -39,10 +39,13 @@ void Ball::update(glm::vec2 size, glm::vec2 mouse)
 
 	if (pos.x + radius > size.x || pos.x - radius < 0)
 	{
+		bool who = pos.x - radius < 0;
+
 		pos.x = size.x / 2.0f;
 		pos.y = size.y / 2.0f;
 		speed.y = 0.0f;
 		accel.x = accel.y = speed.x = 1.0f;
+		score->increase(who);
 	}
 	if (((topBound && pos.y - radius < topBound->getPos().y) || 
 		(pos.y + radius > size.y)) || pos.y - radius < 0)
@@ -98,6 +101,11 @@ void Ball::setPaddles(const Paddle* p1, const Paddle* p2)
 void Ball::setLine(const Line* line)
 {
 	this->topBound = line;
+}
+
+void Ball::setScore(Score* score)
+{
+	this->score = score;
 }
 
 glm::vec2 Ball::getPos() const

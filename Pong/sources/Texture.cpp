@@ -4,7 +4,7 @@
 #include <stb_image.h>
 
 Texture::Texture(unsigned int tex_slot, std::string filename, bool flip) :
-	slot(tex_slot), ID(0), width(0), height(0), channels(0)
+	slot(tex_slot), ID(0), width(0), height(0), channels(0), raw(false)
 {
 	stbi_set_flip_vertically_on_load(flip);
 	data = stbi_load(filename.c_str(), &width, &height, &channels, STBI_rgb_alpha);
@@ -13,20 +13,27 @@ Texture::Texture(unsigned int tex_slot, std::string filename, bool flip) :
 }
 
 Texture::Texture(unsigned int tex_slot, unsigned char* image, int w, int h, int nbrChannel) :
-	slot(tex_slot), ID(0), data(image), width(w), height(h), channels(nbrChannel)
+	slot(tex_slot), ID(0), data(image), width(w), height(h), channels(nbrChannel), raw(true)
 {
+	glGenTextures(1, &ID);
 }
 
-bool Texture::load()
+bool Texture::load(bool mipmap)
 {
 	if (!data)
 		std::cerr << "Error : Texture : Failed to load the texture" << std::endl;
 	use();
 	
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	stbi_image_free(data);
-	data = NULL;
+	GLint format = (channels == 1 ? GL_RED : GL_RGBA);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+	if (mipmap)
+		glGenerateMipmap(GL_TEXTURE_2D);
+	if (!raw)
+	{
+		stbi_image_free(data);
+		data = NULL;
+	}
 	return (true);
 }
 

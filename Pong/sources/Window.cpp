@@ -145,13 +145,38 @@ void Window::display()
 			shape->draw();
 		}
 
+		for (Text* text : _textes)
+		{
+			text->setSize(glm::vec2(_w, _h));
+			text->projection(projection);
+			text->draw();
+		}
+
+		projection = glm::ortho(0.0f, static_cast<float>(_w), 0.0f, static_cast<float>(_h));
+		for (GroupedShape* gs : _groupedShapes)
+		{
+			gs->projection(projection);
+			gs->setSize(glm::vec2(_w, _h));
+			gs->draw();
+		}
+
 		glfwSwapBuffers(_window);
 		glfwPollEvents();
 	}
 }
 
-void Window::addShape(Shape2D *shape)
+void Window::addShape(Shape2D* shape)
 {
 	shape->config();
 	_shapes.push_back(shape);
+}
+
+void Window::addText(Text* text)
+{
+	_textes.push_back(text);
+}
+
+void Window::addGroupedShape(GroupedShape* gs)
+{
+	_groupedShapes.push_back(gs);
 }

@@ -6,6 +6,7 @@
 #include "Line.h"
 #include "MovingShape.h"
 #include "Window.h"
+#include "Score.h"
 #include <array>
 
 class Paddle;
@@ -19,6 +20,7 @@ public:
 
 	void setPaddles(const Paddle* p1, const Paddle* p2);
 	void setLine(const Line *line);
+	void setScore(Score *score);
 
 	glm::vec2 getPos() const;
 	glm::vec2 getSpeed() const;
@@ -31,6 +33,7 @@ private:
 
 	std::array<const Paddle*, 2> paddles;
 	const Line *topBound;
+	Score *score;
 
 	void collide(const Paddle *paddle);
 	bool isColliding(const Paddle *pad, bool mode) const;
