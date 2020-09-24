@@ -11,8 +11,13 @@ Field::Field(glm::vec2 wsize, int w, int h) : size(wsize), absSize(w, h),
 glm::ivec2 Field::getRandomPos() const
 {
 	std::srand(std::time(0));
-	int x = glm::linearRand(0, absSize.x);
-	int y = glm::linearRand(0, absSize.y);
+	int x, y;
+	
+	do
+	{
+		x = glm::linearRand(0, absSize.x);
+		y = glm::linearRand(0, absSize.y);
+	} while (x == static_cast<int>(size.x / 2) || y == static_cast<int>(size.y / 2));
 	return glm::ivec2(x, y);
 }
 

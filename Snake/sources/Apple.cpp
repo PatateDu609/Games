@@ -5,13 +5,15 @@ Apple::Apple(Field *f) : Shape2D(GL_STATIC_DRAW), field(f)
 {
 	setPos(field->getRandomPos());
 
-	addVertex(glm::vec3(-0.5f, -0.5f, 0.0f));
-	addVertex(glm::vec3(0.5f, -0.5f, 0.0f));
-	addVertex(glm::vec3(-0.5f, 0.5f, 0.0f));
+	glm::ivec3 color(255, 0, 0);
 
-	addVertex(glm::vec3(-0.5f, 0.5f, 0.0f));
-	addVertex(glm::vec3(0.5f, 0.5f, 0.0f));
-	addVertex(glm::vec3(0.5f, -0.5f, 0.0f));
+	addVertex(glm::vec3(-0.5f, -0.5f, 0.0f), color);
+	addVertex(glm::vec3(0.5f, -0.5f, 0.0f), color);
+	addVertex(glm::vec3(-0.5f, 0.5f, 0.0f), color);
+
+	addVertex(glm::vec3(-0.5f, 0.5f, 0.0f), color);
+	addVertex(glm::vec3(0.5f, 0.5f, 0.0f), color);
+	addVertex(glm::vec3(0.5f, -0.5f, 0.0f), color);
 }
 
 void Apple::setPos(glm::ivec2 pos)
