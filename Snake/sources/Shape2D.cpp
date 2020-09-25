@@ -15,7 +15,6 @@ Shape2D::~Shape2D()
 
 void Shape2D::addVertex(glm::vec3 coord)
 {
-	vertexCount++;
 	addVertex(coord, glm::ivec3(163, 112, 232));
 }
 

@@ -10,13 +10,13 @@ Field::Field(glm::vec2 wsize, int w, int h) : size(wsize), absSize(w, h),
 
 glm::ivec2 Field::getRandomPos() const
 {
-	std::srand(std::time(0));
 	int x, y;
 	
+	std::srand((unsigned int)std::time(NULL));
 	do
 	{
-		x = glm::linearRand(0, absSize.x);
-		y = glm::linearRand(0, absSize.y);
+		x = glm::linearRand(0, absSize.x - 1);
+		y = glm::linearRand(0, absSize.y - 1);
 	} while (x == static_cast<int>(size.x / 2) || y == static_cast<int>(size.y / 2));
 	return glm::ivec2(x, y);
 }
@@ -28,10 +28,19 @@ glm::vec3 Field::getCellScale() const
 
 glm::vec3 Field::getTranslation(glm::ivec2 pos) const
 {
-	return glm::vec3(pos.x * cellSize.x, pos.y * cellSize.y, 0.0f);
+	return glm::vec3(
+		pos.x * cellSize.x + (cellSize.x / 2.0f), 
+		pos.y * cellSize.y + (cellSize.y / 2.0f), 
+		0.0f
+	);
 }
 
 Apple* Field::getApple()
 {
 	return apple;
+}
+
+glm::ivec2 Field::getCenter() const
+{
+	return glm::ivec2(absSize.x / 2, absSize.y / 2);
 }

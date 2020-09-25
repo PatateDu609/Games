@@ -64,12 +64,12 @@ void processInput(GLFWwindow* window, int key, int scancode, int action, int mod
 void framebufferSize(GLFWwindow* window, int w, int h);
 
 
-enum KEYS
+enum Keys
 {
 	UP = 0,
 	DOWN = 1,
-	W = 2,
-	S = 3
+	RIGHT = 2,
+	LEFT = 3
 };
 extern std::array<int, 4> arrows;
 

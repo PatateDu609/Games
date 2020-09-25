@@ -9,6 +9,9 @@
 
 #include "../headers/Apple.h"
 #include "../headers/Field.h"
+#include "../headers/Snake.h"
+
+#include "../headers/Rectangle.h"
 
 int main()
 {
@@ -33,11 +36,26 @@ int main()
 
 	Field field(size, 60, 60);
 	Apple* apple = field.getApple();
-	
 	apple->setShader(Ressources::load("colored.vert"), Ressources::load("colored.frag"));
-	
 	window.addShape(apple);
+
+	/*Rectangle rectangle(GL_DYNAMIC_DRAW, glm::ivec3(255));
+	rectangle.setColor(glm::ivec3(0, 255, 0));
+	rectangle.setShader(Ressources::load("colored.vert"), Ressources::load("colored.frag"));
+
+	glm::mat4 model(1.0f);
+	model = glm::translate(model, glm::vec3(size.x / 2.0f, size.y / 2.0f, 0.0f));
+	model = glm::scale(model, glm::vec3(200, 200, 1));
+	rectangle.model(model);
+
+	rectangle.setColor(glm::ivec3(255, 0, 0));
+	window.addShape(&rectangle);*/
+
+	Snake snake(&field);
+	window.addGroupedShape(&snake);
+
 	window.setBg(glm::ivec3(0));
 	window.display();
+	delete apple;
 	return (0);
 }

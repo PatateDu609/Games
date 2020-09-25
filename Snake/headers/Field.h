@@ -14,6 +14,7 @@ public:
 
 	glm::vec3 getCellScale() const;
 	glm::vec3 getTranslation(glm::ivec2 pos) const;
+	glm::ivec2 getCenter() const;
 
 	Apple* getApple();
 

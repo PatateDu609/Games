@@ -11,10 +11,10 @@ void processInput(GLFWwindow* window, int key, int scancode, int action, int mod
 		arrows[UP] = action != GLFW_RELEASE ? i++ : -1;
 	else if (key == GLFW_KEY_DOWN && action != GLFW_REPEAT)
 		arrows[DOWN] = action != GLFW_RELEASE ? i++ : -1;
-	else if (key == GLFW_KEY_W && action != GLFW_REPEAT)
-		arrows[W] = action != GLFW_RELEASE ? i++ : -1;
-	else if (key == GLFW_KEY_S && action != GLFW_REPEAT)
-		arrows[S] = action != GLFW_RELEASE ? i++ : -1;
+	else if (key == GLFW_KEY_RIGHT && action != GLFW_REPEAT)
+		arrows[RIGHT] = action != GLFW_RELEASE ? i++ : -1;
+	else if (key == GLFW_KEY_LEFT && action != GLFW_REPEAT)
+		arrows[LEFT] = action != GLFW_RELEASE ? i++ : -1;
 }
 
 void framebufferSize(GLFWwindow* window, int w, int h)
