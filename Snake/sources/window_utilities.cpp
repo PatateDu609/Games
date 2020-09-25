@@ -1,6 +1,7 @@
 #include "../headers/Window.h"
 
 std::array<int, 4> arrows = { -1, -1, -1, -1 };
+bool pause = false;
 
 void processInput(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -15,6 +16,8 @@ void processInput(GLFWwindow* window, int key, int scancode, int action, int mod
 		arrows[RIGHT] = action != GLFW_RELEASE ? i++ : -1;
 	else if (key == GLFW_KEY_LEFT && action != GLFW_REPEAT)
 		arrows[LEFT] = action != GLFW_RELEASE ? i++ : -1;
+	else if (key == GLFW_KEY_P && action == GLFW_PRESS)
+		pause = !pause;
 }
 
 void framebufferSize(GLFWwindow* window, int w, int h)

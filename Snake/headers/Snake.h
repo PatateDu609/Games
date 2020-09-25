@@ -21,11 +21,15 @@ public:
 private:
 	unsigned int length;
 	Field* field;
-	std::deque<glm::ivec2> positions;
+	std::deque<glm::vec2> positions;
 	Rectangle rect;
 
 	bool areOpposite(int lastKey, int key) const;
 	void update(int key);
+	bool moving;
+
+	void rules();
+	void reset();
 };
 
 #endif // !SNAKE_H

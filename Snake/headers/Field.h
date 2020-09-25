@@ -13,8 +13,9 @@ public:
 	glm::ivec2 getRandomPos() const;
 
 	glm::vec3 getCellScale() const;
-	glm::vec3 getTranslation(glm::ivec2 pos) const;
+	glm::vec3 getTranslation(glm::vec2 pos) const;
 	glm::ivec2 getCenter() const;
+	bool checkBounds(glm::vec2 pos) const;
 
 	Apple* getApple();
 

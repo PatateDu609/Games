@@ -26,7 +26,7 @@ glm::vec3 Field::getCellScale() const
 	return glm::vec3(cellSize.x, cellSize.y, 1.0f);
 }
 
-glm::vec3 Field::getTranslation(glm::ivec2 pos) const
+glm::vec3 Field::getTranslation(glm::vec2 pos) const
 {
 	return glm::vec3(
 		pos.x * cellSize.x + (cellSize.x / 2.0f), 
@@ -43,4 +43,9 @@ Apple* Field::getApple()
 glm::ivec2 Field::getCenter() const
 {
 	return glm::ivec2(absSize.x / 2, absSize.y / 2);
+}
+
+bool Field::checkBounds(glm::vec2 pos) const
+{
+	return !((0 <= pos.x && pos.x < absSize.x) && (0 <= pos.y && pos.y < absSize.y));
 }

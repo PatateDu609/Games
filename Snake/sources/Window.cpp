@@ -104,7 +104,7 @@ bool Window::init()
 	if (!_window)
 		return (false);
 	glfwMakeContextCurrent(_window);
-	glfwSwapInterval(1);
+	glfwSwapInterval(2);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		return false;
@@ -152,7 +152,6 @@ void Window::display()
 			text->draw();
 		}
 
-		projection = glm::ortho(0.0f, static_cast<float>(_w), 0.0f, static_cast<float>(_h));
 		for (GroupedShape* gs : _groupedShapes)
 		{
 			gs->projection(projection);

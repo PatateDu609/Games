@@ -72,5 +72,6 @@ enum Keys
 	LEFT = 3
 };
 extern std::array<int, 4> arrows;
+extern bool pause;
 
 #endif // !WINDOW_H
