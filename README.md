@@ -21,6 +21,9 @@
 - Snake moving with arrows : done
 - Snake can eat itself (and die) : done
 - Snake die when it hits a wall : done
+- Score increases when snake eats the apple : done
+- Score resets when snake dies : done
+- DL AI : in progress
 
 ## Dependencies
 - C++17 (or higher, for std::filesystem)
