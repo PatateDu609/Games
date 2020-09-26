@@ -41,7 +41,7 @@ public:
 
 	void addShape(Shape2D *shape);
 	void addText(Text *text);
-	void addGroupedShape(GroupedShape *text);
+	void addGroupedShape(GroupedShape *gs);
 
 	bool init();
 	void display();

@@ -1,6 +1,8 @@
 #ifndef GROUPED_SHAPE_H
 #define GROUPED_SHAPE_H
 
+#include <glm/glm.hpp>
+
 class GroupedShape
 {
 public:

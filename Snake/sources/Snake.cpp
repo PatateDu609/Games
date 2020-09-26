@@ -5,7 +5,9 @@
 #include "../headers/Window.h"
 #include <algorithm>
 
-Snake::Snake(Field *f) : field(f), rect(GL_DYNAMIC_DRAW, glm::ivec3(255, 255, 0)), length(5),
+#define DEFAULT_LENGTH 5
+
+Snake::Snake(Field *f) : field(f), rect(GL_DYNAMIC_DRAW, glm::ivec3(255, 255, 0)), length(DEFAULT_LENGTH),
 	moving(true)
 {
 	positions.push_front(field->getCenter());
@@ -110,6 +112,7 @@ void Snake::rules()
 	{
 		field->getApple()->setPos(field->getRandomPos());
 		length++;
+		eaten->increase();
 		return;
 	}
 }
@@ -117,7 +120,13 @@ void Snake::rules()
 void Snake::reset()
 {
 	moving = false;
-	length = 5;
+	length = DEFAULT_LENGTH;
 	positions.clear();
+	eaten->reset();
 	positions.push_front(field->getCenter());
+}
+
+void Snake::setEaten(Score* eaten)
+{
+	this->eaten = eaten;
 }

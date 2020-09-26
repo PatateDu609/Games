@@ -18,6 +18,7 @@ public:
 	void setScale(float scale);
 	void setColor(glm::ivec3 color);
 	void setShader(std::string vertexShader, std::string fragmentShader);
+	Shader* getShader();
 
 	void draw();
 	void projection(glm::mat4& projection);

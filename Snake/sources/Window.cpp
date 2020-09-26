@@ -155,7 +155,7 @@ void Window::display()
 		for (GroupedShape* gs : _groupedShapes)
 		{
 			gs->projection(projection);
-			gs->setSize(glm::vec2(_w, _h));
+			//gs->setSize(glm::vec2(_w, _h));
 			gs->draw();
 		}
 

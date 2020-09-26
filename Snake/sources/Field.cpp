@@ -2,8 +2,9 @@
 #include "../headers/Apple.h"
 #include <glm/gtc/random.hpp>
 
-Field::Field(glm::vec2 wsize, int w, int h) : size(wsize), absSize(w, h),
-	cellSize(size.x / static_cast<float>(w), size.y / static_cast<float>(h)), apple(NULL)
+Field::Field(glm::vec2 wsize, glm::vec2 woffset, int w, int h) : size(wsize), absSize(w, h),
+	cellSize(size.x / static_cast<float>(w), size.y / static_cast<float>(h)), apple(NULL),
+	offset(woffset)
 {
 	apple = new Apple(this);
 }
@@ -29,8 +30,8 @@ glm::vec3 Field::getCellScale() const
 glm::vec3 Field::getTranslation(glm::vec2 pos) const
 {
 	return glm::vec3(
-		pos.x * cellSize.x + (cellSize.x / 2.0f), 
-		pos.y * cellSize.y + (cellSize.y / 2.0f), 
+		pos.x * cellSize.x + (cellSize.x / 2.0f) + offset.x, 
+		pos.y * cellSize.y + (cellSize.y / 2.0f) + offset.y, 
 		0.0f
 	);
 }

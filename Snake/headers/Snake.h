@@ -6,6 +6,7 @@
 
 #include "Rectangle.h"
 #include "GroupedShape.h"
+#include "Score.h"
 
 class Field;
 
@@ -15,12 +16,14 @@ public:
 	Snake(Field *f);
 
 	void move();
+	void setEaten(Score* eaten);
 
 	virtual void draw();
 
 private:
 	unsigned int length;
 	Field* field;
+	Score* eaten;
 	std::deque<glm::vec2> positions;
 	Rectangle rect;
 

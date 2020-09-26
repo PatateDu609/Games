@@ -8,7 +8,7 @@ class Apple;
 class Field
 {
 public:
-	Field(glm::vec2 wsize, int w, int h);
+	Field(glm::vec2 wsize, glm::vec2 woffset, int w, int h);
 	
 	glm::ivec2 getRandomPos() const;
 
@@ -24,6 +24,7 @@ private:
 	glm::vec2 size;
 	glm::vec2 cellSize;
 	glm::ivec2 absSize;
+	glm::vec2 offset;
 };
 
 #endif // !FIELD_H

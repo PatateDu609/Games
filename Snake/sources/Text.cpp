@@ -71,6 +71,11 @@ void Text::setShader(std::string vertexShader, std::string fragmentShader)
 	shader = new Shader(vertexShader.c_str(), fragmentShader.c_str());
 }
 
+Shader* Text::getShader()
+{
+	return shader;
+}
+
 void Text::draw()
 {
 	float x = coord.x;
